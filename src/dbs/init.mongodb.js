@@ -1,7 +1,8 @@
 'use strict'
 const mongoose = require('mongoose');
 const {countConnect} = require('../helpers/check.connect');
-const connectString = 'mongodb://localhost:27017/shopDev'
+const config = require('../configs/config.mongodb');
+const connectString = `mongodb://${config.db.host}:${config.db.port}/${config.db.name}`;
 
 class Database{
     constructor(){
@@ -33,4 +34,4 @@ class Database{
 }
 
 const instanceMongoDB = Database.getInstance();
-module.exports = instanceMongoDB;console.log('hehehehhehe');
+module.exports = {instanceMongoDB};
